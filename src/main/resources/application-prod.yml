@@ -1,9 +1,7 @@
 spring:
   datasource:
+    url: ${JDBC_DATABASE_URL}
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://{host_value}:5432/overwatch_db
-    username: overwatch_db_user
-    password: { password_value }
   jpa:
     hibernate:
       ddl-auto: update
