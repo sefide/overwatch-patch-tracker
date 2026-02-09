@@ -9,7 +9,7 @@ from datetime import datetime
 import re
 
 def scrape_overwatch_patches():
-    url = "https://overwatch.blizzard.com/en-us/news/patch-notes"
+    url = "https://overwatch.blizzard.com/en-us/news/patch-notes/live"
     
     print(f"🔍 패치 노트 페이지 접근 중: {url}")
     
