@@ -52,7 +52,7 @@ overwatch-patch-tracker/
 ## 🚀 로컬 실행
 
 ### 필수 요구사항
-- JDK 17 이상
+- JDK 21 이상
 - Gradle 8.5+
 - PostgreSQL (또는 H2 사용)
 
@@ -179,7 +179,7 @@ CREATE TABLE balance_changes (
    railway up
    ```
 
-## 📝 API 엔드포인트 (예정)
+## 📝 API 엔드포인트
 
 ```
 GET  /api/heroes                    # 모든 영웅 목록
@@ -208,7 +208,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '21'
       - run: ./gradlew bootRun --args='--scrape'
 ```
 
@@ -233,7 +233,7 @@ MIT License
 
 ## 👤 개발자
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@sefide](https://github.com/sefide)
 
 ## 🙏 감사의 말
 
