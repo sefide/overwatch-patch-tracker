@@ -17,7 +17,7 @@ import java.util.*
 class OverwatchPatchScraper {
 
     private val logger = LoggerFactory.getLogger(javaClass)
-    private val baseUrl = "https://overwatch.blizzard.com/en-us/news/patch-notes"
+    private val baseUrl = "https://overwatch.blizzard.com/en-us/news/patch-notes/live"
 
     fun scrapeLatestPatch(): List<PatchNoteDto> {
         logger.info("Scraping latest patch notes from: $baseUrl")
@@ -116,13 +116,20 @@ class OverwatchPatchScraper {
             try {
                 // h5에서 영웅 이름 추출
                 val h5 = heroDiv.select("h5").firstOrNull()
+
                 if (h5 == null) {
                     logger.debug("No h5 found in hero div")
                     return@forEach
                 }
-
                 val heroName = cleanHeroName(h5.text())
                 logger.debug("Processing hero: $heroName")
+
+                // Mask, Skin 포함된 이름 스킵
+                if (heroName.contains("Mask", ignoreCase = true) ||
+                    heroName.contains("Skin", ignoreCase = true)) {
+                    logger.debug("Skipping cosmetic: $heroName")
+                    return@forEach
+                }
 
                 // 개발자 코멘트 찾기
                 val devCommentDiv = heroDiv.select("div.PatchNotes-dev").firstOrNull()
